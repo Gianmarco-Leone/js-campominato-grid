@@ -16,8 +16,10 @@
  *           ON LOAD            *
  *                              *
  *******************************/
+
+// Recupero tag button dall'HTML
 const playGame = document.getElementById("play_game");
-//Imposto variabili dimensioni a seconda della difficolà
+// Imposto variabili dimensioni griglia a seconda della difficolà
 let dimensionHardGrid = 49;
 let dimensionMediumGrid = 81;
 let dimensionEasyGrid = 100;
@@ -27,14 +29,19 @@ let dimensionEasyGrid = 100;
  *           ON CLICK           *
  *                              *
  *******************************/
+
+// Genero evento al click del button
 playGame.addEventListener(
     "click",
     function () {
+        // Recupero il valore della difficoltà scelta dall'utente
         const userInputDifficult = document.getElementById("difficult");
         const gameDifficult = userInputDifficult.value;
+        // Recupero il tag div grid dall'HTML
         const gridEl = document.getElementById("grid");
+
         let dimensionGridEl;
-        generateGrid(gridEl, dimensionGridEl);
+
         // Cambia griglia a seconda della difficoltà scelta dall'utente
         if (gameDifficult == "medium") {
             dimensionGridEl = dimensionMediumGrid;
