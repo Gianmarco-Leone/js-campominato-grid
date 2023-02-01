@@ -37,13 +37,16 @@ generateGrid(gridEl, dimensionGridEl);
 function generateGrid(grid, dimensionGrid) {
     // Creo il ciclo che andrà a generare n div con classe square
     for (let i = 0; i < dimensionGrid; i++) {
+        const numberSquare = i + 1;
         const squareEl = document.createElement("div");
         squareEl.classList.add("square");
+        squareEl.innerHTML = numberSquare;
         // Aggiungo evento al click del quadrato
         squareEl.addEventListener(
             "click",
             function () {
                 this.classList.toggle("active");
+                console.log(numberSquare);
             }
         );
 
