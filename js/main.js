@@ -13,12 +13,26 @@
 
 /********************************
  *                              *
- *           ON LOAD          *
+ *           ON LOAD            *
  *                              *
  *******************************/
-const gridEl = document.getElementById("grid");
-let dimensionGridEl = 100;
-generateGrid(gridEl, dimensionGridEl);
+const playGame = document.getElementById("play_game");
+
+/********************************
+ *                              *
+ *           ON CLICK           *
+ *                              *
+ *******************************/
+playGame.addEventListener(
+    "click",
+    function () {
+        const gridEl = document.getElementById("grid");
+        let dimensionGridEl = 100;
+        generateGrid(gridEl, dimensionGridEl);
+    }
+);
+
+
 
 
 /********************************
@@ -35,6 +49,8 @@ generateGrid(gridEl, dimensionGridEl);
  */
 
 function generateGrid(grid, dimensionGrid) {
+    // Resettare grid in condizione di start
+    grid.innerHTML = "";
     // Creo il ciclo che andrà a generare n div con classe square
     for (let i = 0; i < dimensionGrid; i++) {
         const numberSquare = i + 1;
