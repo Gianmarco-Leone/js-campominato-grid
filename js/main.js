@@ -18,6 +18,7 @@
  *******************************/
 const playGame = document.getElementById("play_game");
 
+
 /********************************
  *                              *
  *           ON CLICK           *
@@ -26,9 +27,23 @@ const playGame = document.getElementById("play_game");
 playGame.addEventListener(
     "click",
     function () {
+        const userInputDifficult = document.getElementById("difficult");
+        const gameDifficult = userInputDifficult.value;
         const gridEl = document.getElementById("grid");
-        let dimensionGridEl = 100;
+        let dimensionGridEl;
         generateGrid(gridEl, dimensionGridEl);
+        // Cambia griglia a seconda della difficoltà scelta dall'utente
+        if (gameDifficult == "medium") {
+            dimensionGridEl = 81;
+            generateGrid(gridEl, dimensionGridEl);
+        } else if (gameDifficult == "hard") {
+            dimensionGridEl = 49;
+            generateGrid(gridEl, dimensionGridEl);
+        } else {
+            dimensionGridEl = 100;
+            generateGrid(gridEl, dimensionGridEl);
+        }
+
     }
 );
 
