@@ -41,6 +41,16 @@ main {
     align-items: center;
 }
 
+.square-medium {
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+}
+
+.square-hard {
+    width: calc(100% / 7);
+    height: calc(100% / 7);
+}
+
 .square.active {
     background-color: lightblue;
     color: #FFF;

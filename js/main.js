@@ -17,7 +17,10 @@
  *                              *
  *******************************/
 const playGame = document.getElementById("play_game");
-
+//Imposto variabili dimensioni a seconda della difficolà
+let dimensionHardGrid = 49;
+let dimensionMediumGrid = 81;
+let dimensionEasyGrid = 100;
 
 /********************************
  *                              *
@@ -34,21 +37,18 @@ playGame.addEventListener(
         generateGrid(gridEl, dimensionGridEl);
         // Cambia griglia a seconda della difficoltà scelta dall'utente
         if (gameDifficult == "medium") {
-            dimensionGridEl = 81;
+            dimensionGridEl = dimensionMediumGrid;
             generateGrid(gridEl, dimensionGridEl);
         } else if (gameDifficult == "hard") {
-            dimensionGridEl = 49;
+            dimensionGridEl = dimensionHardGrid;
             generateGrid(gridEl, dimensionGridEl);
         } else {
-            dimensionGridEl = 100;
+            dimensionGridEl = dimensionEasyGrid;
             generateGrid(gridEl, dimensionGridEl);
         }
 
     }
 );
-
-
-
 
 /********************************
  *                              *
@@ -60,7 +60,7 @@ playGame.addEventListener(
  * funzione che genera una griglia di quadrati dato l'elemento griglia e il numero di quadrati
  * 
  * @param {*} grid l'elemento griglia
- * @param {int} dimensionGrid il numero di quadrati totali della griglia
+ * @param {int} dimensionGrid il numero di quadrati totali della griglia che può cambiare a seconda della difficoltà
  */
 
 function generateGrid(grid, dimensionGrid) {
@@ -70,7 +70,17 @@ function generateGrid(grid, dimensionGrid) {
     for (let i = 0; i < dimensionGrid; i++) {
         const numberSquare = i + 1;
         const squareEl = document.createElement("div");
-        squareEl.classList.add("square");
+        //Imposto condizioni che determinano la grandezza della griglia a seconda della difficoltà 
+        if (dimensionGrid == dimensionHardGrid) {
+            squareEl.classList.add("square");
+            squareEl.classList.add("square-hard");
+        } else if (dimensionGrid == dimensionMediumGrid) {
+            squareEl.classList.add("square");
+            squareEl.classList.add("square-medium");
+        } else {
+            squareEl.classList.add("square");
+        }
+        // Scrivo numero all'interno del quadrato
         squareEl.innerHTML = numberSquare;
         // Aggiungo evento al click del quadrato
         squareEl.addEventListener(
@@ -80,9 +90,7 @@ function generateGrid(grid, dimensionGrid) {
                 console.log(numberSquare);
             }
         );
-
         // Aggiungo elemento square all'elemento grid
         grid.append(squareEl);
     }
-
 }
